@@ -1,0 +1,13 @@
+{% extends 'home/HomeBase.html' %}
+
+{% block content %}
+
+
+    <form method="POST">
+        {% csrf_token %}
+       <legend>Are you sure to Delete?</legend>
+       <button type="submit" class="btn btn-primary">YES</button>
+       <a  class="btn btn-primary" href="{% url 'datail-post' object.id %}">NO</a>
+    </form>
+
+{% endblock content %}

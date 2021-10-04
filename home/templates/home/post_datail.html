@@ -1,0 +1,20 @@
+{% extends 'home/HomeBase.html' %}
+
+{% block content %}
+
+
+
+    <article>
+       
+        <div id="content">
+            <p>{{post.content}}</p>
+        </div>
+        <div id="subtitle"> 
+            <span> by: {{post.author.username}}</span>       
+            <span>{{post.date_posted.date}}</span>
+        </div>
+
+    </article>
+
+
+{% endblock content %}

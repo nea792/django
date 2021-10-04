@@ -1,0 +1,44 @@
+{% extends 'home/HomeBase.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{{ view.kwargs}}
+{% for post in posts %}
+    <article class=" content-section">
+        <div class="info">
+            <div class="row">
+                <div class="col-3">
+                    <span><img  src="{{post.author.profile.image.url}}"></span>
+                    <span>{{post.author.username}}</span>
+                </div>
+                <div class="col" >
+                    <a style="float:right;margin-right:5px;" class="col-1" href="#" id="navbardrop" data-toggle="dropdown">
+                            {% load static %}  
+                            <img style="height:10px;"  src={% static "home/media/td.png" %} />
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'update-post' post.id %}">Edit</a>
+                        <a class="dropdown-item" href="{% url 'delete-post' post.id %}">Delete</a>
+                    </div>
+                </div>    
+            </div>
+
+            <div>
+                <a href="{% url 'datail-post' post.id %}">
+                    <div id="content">
+                        <p>  {{post.content|linebreaks}} </p>   
+                    </div>
+                </a>
+            </div>
+        </div>    
+    </article>
+{% endfor%}
+
+<script>
+    element=document.getElementById('id_content')
+    element.placeholder="what's happening?"
+    element.style="border-radius:20px;margin:10px;padding:10px;border-color:#fff;height:100px"
+   
+</script>
+{% endblock content %}
